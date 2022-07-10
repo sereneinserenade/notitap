@@ -6,4 +6,5 @@ module.exports = {
     "react/function-component-definition": 0,
     "import/no-extraneous-dependencies": 0,
   },
+  ignorePatterns: ["**/*.json", "**/vendor/*.js"],
 };
