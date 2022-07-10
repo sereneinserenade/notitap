@@ -1,0 +1,7 @@
+.ProseMirror {
+  p.is-empty::before {
+    @apply text-slate-400 float-left h-0 pointer-events-none absolute ml-[2px];
+
+    content: attr(data-placeholder);
+  }
+}
