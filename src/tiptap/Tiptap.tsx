@@ -5,6 +5,7 @@ import "tippy.js/animations/shift-toward-subtle.css";
 import { extensions } from "./extensions";
 import { debounce } from "./utils";
 import { content } from "./mocks";
+import { CustomBubbleMenu } from "./menus";
 
 import "./styles/tiptap.scss";
 
@@ -27,5 +28,12 @@ export const Tiptap = () => {
     },
   });
 
-  return <EditorContent className="w-full" editor={editor} />;
+  return (
+    editor && (
+      <>
+        <EditorContent className="w-full" editor={editor} />
+        <CustomBubbleMenu editor={editor} />
+      </>
+    )
+  );
 };
