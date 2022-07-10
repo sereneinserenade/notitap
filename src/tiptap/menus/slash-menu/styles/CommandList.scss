@@ -1,0 +1,15 @@
+.items {
+  @apply shadow-md bg-white p-2 box-border max-h-[20rem] overflow-y-auto rounded;
+
+  .item:not(.divider) {
+    @apply w-full flex rounded items-center gap-2 p-2 box-border justify-between cursor-pointer;
+
+    svg {
+      @apply inline-flex justify-center items-center;
+    }
+
+    &.is-selected {
+      @apply bg-slate-200;
+    }
+  }
+}
