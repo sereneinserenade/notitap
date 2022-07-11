@@ -1,4 +1,4 @@
-# notetap
+# notitap
 
 Notion like editor built on top of [Tiptap](https://tiptap.dev/).
 
@@ -20,10 +20,9 @@ Video coming 🔜
 
 ## Contributing
 
-If you're making money from this extension or as gesture, it'd be very kind of you to **[:heart: Sponsor me](https://github.com/sponsors/sereneinserenade)**. You can also show your ❤️ by ⭐️ing this repository. Your support means a lot.
+**[:heart: Sponsor me](https://github.com/sponsors/sereneinserenade)** to make it possible for me to work on . You can also show your ❤️ by ⭐️ing this repository. Your support means a lot.
 
 Clone the repo, do something, make a PR. You know what's the drill. Looking forward to your PRs, you amazing devs.
 
 ## Stargazers
 [![Stargazers repo roster for @sereneinserenade/notetap](https://reporoster.com/stars/dark/sereneinserenade/notetap)](https://github.com/sereneinserenade/notetap/stargazers)
-

@@ -8,7 +8,7 @@ export const content: Content = {
       content: [
         {
           type: "text",
-          text: "This is notetap. A notion-like plug and play editor built on top of Tiptap/ProseMirror. ",
+          text: "This is notitap. A notion-like plug and play editor built on top of Tiptap/ProseMirror. ",
         },
       ],
     },

@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
         ],
       }),
     ],
-    base: mode === "production" ? "/notetap/" : "/",
+    base: mode === "production" ? "/notitap/" : "/",
   };
 
   return config;

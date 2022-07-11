@@ -9,9 +9,9 @@ function App() {
         <section className="flex flex-row items-center gap-4">
           <a
             className="text-3xl link"
-            href="https://github.com/sereneinserenade/notetap"
+            href="https://github.com/sereneinserenade/notitap"
           >
-            Notetap <i className="i-mdi-github" />
+            notitap <i className="i-mdi-github" />
           </a>
           <a
             className="btn btn-secondary btn-outline btn-sm"
