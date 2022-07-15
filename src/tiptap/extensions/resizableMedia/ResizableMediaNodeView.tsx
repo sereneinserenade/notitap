@@ -8,6 +8,8 @@ import { resizableMediaActions } from "./resizableMediaMenuUtil";
 
 import "./styles.scss";
 
+let lastClientX: number;
+
 export const ResizableMediaNodeView = ({
   node,
   updateAttributes,
@@ -55,17 +57,16 @@ export const ResizableMediaNodeView = ({
     if (!resizableImgRef.current) return;
 
     if (mediaType === "video") {
-      // Aspect Ratio from its original size
-      setTimeout(() => {
-        setAspectRatio(
-          (resizableImgRef as unknown as HTMLVideoElement).videoWidth /
-            (resizableImgRef.current as HTMLVideoElement).videoHeight
-        );
+      const video = resizableImgRef.current as HTMLVideoElement;
+
+      video.addEventListener("loadeddata", function () {
+        // Aspect Ratio from its original size
+        setAspectRatio(video.videoWidth / video.videoHeight);
 
         // for the first time when video is added with custom width and height
         // and we have to adjust the video height according to it's width
         onHorizontalResize("left", 0);
-      }, 200);
+      });
     } else {
       resizableImgRef.current.onload = () => {
         // Aspect Ratio from its original size
@@ -73,12 +74,14 @@ export const ResizableMediaNodeView = ({
           (resizableImgRef.current as HTMLImageElement).naturalWidth /
             (resizableImgRef.current as HTMLImageElement).naturalHeight
         );
-
-        onHorizontalResize("left", 0);
       };
     }
 
     setTimeout(() => calculateMediaActionActiveStates(), 200);
+  };
+
+  const setLastClientX = (x: number) => {
+    lastClientX = x;
   };
 
   useEffect(() => {
@@ -88,8 +91,6 @@ export const ResizableMediaNodeView = ({
   const [isHorizontalResizeActive, setIsHorizontalResizeActive] =
     useState(false);
 
-  const [lastCursorX, setLastCursorX] = useState(-1);
-
   interface WidthAndHeight {
     width: number;
     height: number;
@@ -98,19 +99,25 @@ export const ResizableMediaNodeView = ({
   const limitWidthOrHeightToFiftyPixels = ({ width, height }: WidthAndHeight) =>
     width < 100 || height < 100;
 
-  const startHorizontalResize = (e: MouseEvent) => {
-    setIsHorizontalResizeActive(true);
-    setLastCursorX(e.clientX);
+  const documentHorizontalMouseMove = (e: MouseEvent) => {
+    setTimeout(() => onHorizontalMouseMove(e));
+  };
 
-    document.addEventListener("mousemove", onHorizontalMouseMove);
-    document.addEventListener("mouseup", stopHorizontalResize);
+  const startHorizontalResize = (e: { clientX: number }) => {
+    setIsHorizontalResizeActive(true);
+    lastClientX = e.clientX;
+
+    setTimeout(() => {
+      document.addEventListener("mousemove", documentHorizontalMouseMove);
+      document.addEventListener("mouseup", stopHorizontalResize);
+    });
   };
 
   const stopHorizontalResize = () => {
     setIsHorizontalResizeActive(false);
-    setLastCursorX(-1);
+    lastClientX = -1;
 
-    document.removeEventListener("mousemove", onHorizontalMouseMove);
+    document.removeEventListener("mousemove", documentHorizontalMouseMove);
     document.removeEventListener("mouseup", stopHorizontalResize);
   };
 
@@ -118,8 +125,6 @@ export const ResizableMediaNodeView = ({
     directionOfMouseMove: "right" | "left",
     diff: number
   ) => {
-    debugger;
-
     if (!resizableImgRef.current) {
       console.error("Media ref is undefined|null", {
         resizableImg: resizableImgRef.current,
@@ -154,88 +159,20 @@ export const ResizableMediaNodeView = ({
   };
 
   const onHorizontalMouseMove = (e: MouseEvent) => {
+    if (lastClientX === -1) return;
+
     const { clientX } = e;
 
-    const diff = lastCursorX - clientX;
-
-    setLastCursorX(clientX);
+    const diff = lastClientX - clientX;
 
     if (diff === 0) return;
 
     const directionOfMouseMove: "left" | "right" = diff > 0 ? "left" : "right";
 
-    onHorizontalResize(directionOfMouseMove, Math.abs(diff));
-  };
-
-  const [isVerticalResizeActive, setIsVerticalResizeActive] = useState(false);
-
-  const [lastCursorY, setLastCursorY] = useState(-1);
-
-  const startVerticalResize = (e: MouseEvent) => {
-    setIsVerticalResizeActive(true);
-    setLastCursorY(e.clientY);
-
-    document.addEventListener("mousemove", onVerticalMouseMove);
-    document.addEventListener("mouseup", stopVerticalResize);
-  };
-
-  const stopVerticalResize = () => {
-    setIsVerticalResizeActive(false);
-    setLastCursorY(-1);
-
-    document.removeEventListener("mousemove", onVerticalMouseMove);
-    document.removeEventListener("mouseup", stopVerticalResize);
-  };
-
-  const onVerticalMouseMove = (e: MouseEvent) => {
-    if (!isVerticalResizeActive) return;
-
-    const { clientY } = e;
-
-    const diff = lastCursorY - clientY;
-
-    setLastCursorY(clientY);
-
-    if (diff === 0) return;
-
-    const directionOfMouseMove: "up" | "down" = diff > 0 ? "up" : "down";
-
-    if (!resizableImgRef.current) {
-      console.error("Media ref is undefined|null", {
-        resizableImg: resizableImgRef.current,
-      });
-      return;
-    }
-
-    const currentMediaDimensions = {
-      width: resizableImgRef.current?.width,
-      height: resizableImgRef.current?.height,
-    };
-
-    const newMediaDimensions = {
-      width: -1,
-      height: -1,
-    };
-
-    if (directionOfMouseMove === "up") {
-      newMediaDimensions.height =
-        currentMediaDimensions.height - Math.abs(diff);
-    } else {
-      newMediaDimensions.height =
-        currentMediaDimensions.height + Math.abs(diff);
-    }
-
-    newMediaDimensions.width = newMediaDimensions.height * aspectRatio;
-
-    if (newMediaDimensions.width > proseMirrorContainerWidth) {
-      newMediaDimensions.width = proseMirrorContainerWidth;
-
-      newMediaDimensions.height = newMediaDimensions.width / aspectRatio;
-    }
-
-    if (limitWidthOrHeightToFiftyPixels(newMediaDimensions)) return;
-
-    updateAttributes(newMediaDimensions);
+    setTimeout(() => {
+      onHorizontalResize(directionOfMouseMove, Math.abs(diff));
+      lastClientX = clientX;
+    });
   };
 
   const [isFloat, setIsFloat] = useState<boolean>();
@@ -290,17 +227,9 @@ export const ResizableMediaNodeView = ({
             isHorizontalResizeActive ? "horizontal-resize-active" : ""
           }`}
           title="Resize"
-          onMouseDown={(e) => startHorizontalResize(e as any)}
-          onMouseUp={() => stopHorizontalResize()}
-        />
-
-        <div
-          className={`vertical-resize-handle ${
-            isHorizontalResizeActive ? "vertical-resize-active" : ""
-          }`}
-          title="Resize"
-          onMouseDown={(e) => startVerticalResize(e as any)}
-          onMouseUp={() => stopVerticalResize()}
+          onClick={({ clientX }) => setLastClientX(clientX)}
+          onMouseDown={startHorizontalResize}
+          onMouseUp={stopHorizontalResize}
         />
       </div>
     </NodeViewWrapper>

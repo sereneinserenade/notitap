@@ -1,18 +1,20 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import { Editor } from "@tiptap/core";
+import { useCallback, useEffect } from "react";
 import "tippy.js/animations/shift-toward-subtle.css";
+// import applyDevTools from "prosemirror-dev-tools";
 
 import { extensions } from "./extensions";
-import { debounce } from "./utils";
 import { content } from "./mocks";
 import { CustomBubbleMenu } from "./menus";
 
 import "./styles/tiptap.scss";
 
 export const Tiptap = () => {
-  const logContent = (e: Editor) => console.log(JSON.stringify(e.getJSON()));
-
-  const debouncedLogContent = debounce(logContent, 500);
+  const logContent = useCallback(
+    (e: Editor) => console.log(JSON.stringify(e.getJSON())),
+    []
+  );
 
   const editor = useEditor({
     extensions,
@@ -24,7 +26,7 @@ export const Tiptap = () => {
       },
     },
     onUpdate({ editor: e }) {
-      debouncedLogContent(e);
+      logContent(e);
     },
   });
 
@@ -53,18 +55,26 @@ export const Tiptap = () => {
 
   return (
     editor && (
-      <>
+      <section className="flex flex-col gap-2">
         <span className="flex gap-2">
-          <button type="button" onClick={() => addImage()}>
+          <button
+            className="btn btn-sm btn-outline"
+            type="button"
+            onClick={() => addImage()}
+          >
             Add Image
           </button>
-          <button type="button" onClick={() => addVideo()}>
+          <button
+            className="btn btn-sm btn-outline"
+            type="button"
+            onClick={() => addVideo()}
+          >
             Add Video
           </button>
         </span>
         <EditorContent className="w-full" editor={editor} />
         <CustomBubbleMenu editor={editor} />
-      </>
+      </section>
     )
   );
 };

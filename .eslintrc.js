@@ -6,6 +6,7 @@ module.exports = {
     "react/function-component-definition": 0,
     "import/no-extraneous-dependencies": 0,
     "@typescript-eslint/no-use-before-define": ["warn"],
+    "jsx-a11y/click-events-have-key-events": ["warn"],
   },
   ignorePatterns: ["**/*.json", "**/vendor/*.js"],
 };

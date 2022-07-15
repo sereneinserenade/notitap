@@ -12,7 +12,7 @@ export const CustomBubbleMenu: React.FC<CustomBubbleMenuProps> = ({
   return (
     <BubbleMenu
       editor={editor}
-      className="shadow bg-white rounded-sm overflow-hidden"
+      className="shadow bg-white rounded-sm overflow-hidden border border-slate-200 box-border"
     >
       {buttons.map((btn) => {
         return (
