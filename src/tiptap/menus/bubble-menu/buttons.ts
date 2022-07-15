@@ -8,7 +8,7 @@ interface BubbleMenuItem {
   iconClass: string;
 }
 
-export const buttons: BubbleMenuItem[] = [
+export const generalButtons: BubbleMenuItem[] = [
   {
     tooltip: "Bold",
     action: (editor: Editor) => editor.chain().focus().toggleBold().run(),

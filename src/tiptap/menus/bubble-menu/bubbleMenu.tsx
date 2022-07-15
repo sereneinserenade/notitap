@@ -1,6 +1,6 @@
 import { BubbleMenu, Editor } from "@tiptap/react";
 
-import { buttons } from "./buttons";
+import { generalButtons } from "./buttons";
 
 interface CustomBubbleMenuProps {
   editor: Editor;
@@ -12,9 +12,9 @@ export const CustomBubbleMenu: React.FC<CustomBubbleMenuProps> = ({
   return (
     <BubbleMenu
       editor={editor}
-      className="shadow bg-white rounded-sm overflow-hidden"
+      className="shadow bg-white rounded-sm overflow-hidden border border-slate-200 box-border"
     >
-      {buttons.map((btn) => {
+      {generalButtons.map((btn) => {
         return (
           // TODO: figure out why tooltips are not working
           <div className="tooltip" key={btn.tooltip} data-tip={btn.tooltip}>
