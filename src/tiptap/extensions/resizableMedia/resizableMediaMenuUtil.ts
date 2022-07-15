@@ -17,7 +17,7 @@ export const resizableMediaActions: ResizableMediaAction[] = [
         dataAlign: "left",
         dataFloat: null,
       }),
-    // icon: IconAlignLeft,
+    icon: "i-mdi-format-align-left",
     isActive: (attrs) => attrs.dataAlign === "left",
   },
   {
@@ -27,7 +27,7 @@ export const resizableMediaActions: ResizableMediaAction[] = [
         dataAlign: "center",
         dataFloat: null,
       }),
-    // icon: IconAlignCenter,
+    icon: "i-mdi-format-align-center",
     isActive: (attrs) => attrs.dataAlign === "center",
   },
   {
@@ -37,7 +37,7 @@ export const resizableMediaActions: ResizableMediaAction[] = [
         dataAlign: "right",
         dataFloat: null,
       }),
-    // icon: IconAlignRight,
+    icon: "i-mdi-format-align-right",
     isActive: (attrs) => attrs.dataAlign === "right",
   },
   {
@@ -47,7 +47,7 @@ export const resizableMediaActions: ResizableMediaAction[] = [
         dataAlign: null,
         dataFloat: "left",
       }),
-    // icon: IconFloatLeft,
+    icon: "i-mdi-format-float-left",
     isActive: (attrs) => attrs.dataFloat === "left",
   },
   {
@@ -57,12 +57,12 @@ export const resizableMediaActions: ResizableMediaAction[] = [
         dataAlign: null,
         dataFloat: "right",
       }),
-    // icon: IconFloatRight,
+    icon: "i-mdi-format-float-right",
     isActive: (attrs) => attrs.dataFloat === "right",
   },
   {
     tooltip: "Delete",
-    // icon: IconDelete,
+    icon: "i-mdi-delete",
     delete: (deleteNode) => deleteNode(),
   },
 ];

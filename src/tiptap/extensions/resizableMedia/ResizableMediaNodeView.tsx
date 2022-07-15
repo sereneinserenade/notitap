@@ -8,11 +8,14 @@ import { resizableMediaActions } from "./resizableMediaMenuUtil";
 
 import "./styles.scss";
 
+// ! had to manage this state outside of the component because `useState` isn't fast enough and creates problem cause
+// ! the function is getting old data even though new data is set by `useState` before the execution of function
 let lastClientX: number;
 
 export const ResizableMediaNodeView = ({
   node,
   updateAttributes,
+  deleteNode,
 }: NodeViewProps) => {
   const [mediaType, setMediaType] = useState<"img" | "video">();
 
@@ -194,6 +197,7 @@ export const ResizableMediaNodeView = ({
         media-node-view flex pos-relative not-prose
         ${(isFloat && `f-${node.attrs.dataFloat}`) || ""}
         ${(isAlign && `align-${node.attrs.dataAlign}`) || ""}
+        group
       `}
     >
       <div className="w-fit flex relative">
@@ -231,6 +235,34 @@ export const ResizableMediaNodeView = ({
           onMouseDown={startHorizontalResize}
           onMouseUp={stopHorizontalResize}
         />
+
+        <section
+          className="
+          group-hover:opacity-100 opacity-0 absolute top-2 left-2 bg-white transition-all duration-200 ease-linear
+          shadow rounded-sm overflow-hidden border border-slate-200 box-border
+        "
+        >
+          {resizableMediaActions.map((btn) => {
+            return (
+              // TODO: figure out why tooltips are not working
+              <div className="tooltip" key={btn.tooltip} data-tip={btn.tooltip}>
+                <button
+                  type="button"
+                  className={`btn btn-xs btn-ghost rounded-none h-8 px-2 ${
+                    mediaActionActiveState[btn.tooltip] ? "btn-active" : ""
+                  }`}
+                  onClick={() =>
+                    btn.tooltip === "Delete"
+                      ? deleteNode()
+                      : btn.action?.(updateAttributes)
+                  }
+                >
+                  <i className={`${btn.icon} scale-150`} />
+                </button>
+              </div>
+            );
+          })}
+        </section>
       </div>
     </NodeViewWrapper>
   );
