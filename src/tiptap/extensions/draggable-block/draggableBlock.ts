@@ -3,7 +3,7 @@
 // Proprietary and confidential
 // Written by Jeet Ajaybhai Mandaliya <jeet.mandaliya7@gmail.com>, 17th July 2022
 
-import { Node, mergeAttributes } from "@tiptap/core";
+import { Node, mergeAttributes, Content } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 
 import { DraggableBlockNodeView } from "./draggableBlockNodeView";
@@ -45,12 +45,12 @@ export const DraggableBlock = Node.create<DraggableBlockOptions>({
   },
 
   parseHTML() {
-    return [{ tag: 'div[data-type="draggable-block"]' }];
+    return [{ tag: 'article[data-type="draggable-block"]' }];
   },
 
   renderHTML({ HTMLAttributes }) {
     return [
-      "div",
+      "article",
       mergeAttributes(HTMLAttributes, { "data-type": "draggable-block" }),
       0,
     ];
@@ -60,8 +60,55 @@ export const DraggableBlock = Node.create<DraggableBlockOptions>({
     return {
       setDraggableBlock:
         () =>
-        ({ commands }) => {
-          return commands.setNode(this.name);
+        ({ chain, state, commands }) => {
+          const {
+            selection: { $head, from, to },
+            doc,
+          } = state;
+
+          const parent = $head.node($head.depth - 1);
+
+          if (parent.type.name !== "draggableBlock") return false;
+
+          let currentActiveNodeTo = -1;
+
+          doc.descendants((node, pos) => {
+            if (currentActiveNodeTo !== -1) return false;
+
+            const [nodeFrom, nodeTo] = [pos, pos + node.nodeSize];
+
+            if (nodeFrom <= from && to <= nodeTo) currentActiveNodeTo = nodeTo;
+
+            return false;
+          });
+
+          let textContent;
+
+          const textOnRight = doc.textBetween(from, currentActiveNodeTo);
+
+          if (textOnRight) {
+            textContent = {
+              type: "text",
+              text: textOnRight,
+            };
+          }
+
+          return chain()
+            .insertContentAt(
+              { from, to: currentActiveNodeTo },
+              {
+                type: this.name,
+                content: [
+                  {
+                    type: "paragraph",
+                    content: textContent ? [textContent] : [],
+                  },
+                ],
+              }
+            )
+            .focus("start")
+            .focus(from + 3)
+            .run();
         },
     };
   },
@@ -73,6 +120,7 @@ export const DraggableBlock = Node.create<DraggableBlockOptions>({
   addKeyboardShortcuts() {
     return {
       "Mod-Alt-0": () => this.editor.commands.setDraggableBlock(),
+      Enter: () => this.editor.commands.setDraggableBlock(),
     };
   },
 });

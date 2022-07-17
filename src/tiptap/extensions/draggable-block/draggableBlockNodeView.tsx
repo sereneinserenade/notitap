@@ -1,23 +1,15 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 // Copyright (C) Jeet Ajaybhai Mandaliya - All Rights Reserved
 // Unauthorized copying of this file or any file in notitap-pro(this project - https://github.com/sereneinserenade/notitap-pro), via any medium is strictly prohibited
 // Proprietary and confidential
 // Written by Jeet Ajaybhai Mandaliya <jeet.mandaliya7@gmail.com>, 17th July 2022
 
-import React, { useRef, useState } from "react";
+import React from "react";
 import { NodeViewWrapper, NodeViewProps, NodeViewContent } from "@tiptap/react";
-import { NodeSelection } from "prosemirror-state";
 
 // import "./styles.scss";
 
-export const DraggableBlockNodeView = ({
-  node,
-  updateAttributes,
-  deleteNode,
-  editor,
-  getPos,
-}: NodeViewProps) => {
-  const [isCurrentNodeSelected, setIsCurrentNodeSelected] = useState(false);
-
+export const DraggableBlockNodeView: React.FC<NodeViewProps> = () => {
   return (
     <NodeViewWrapper
       as="div"
@@ -29,14 +21,10 @@ export const DraggableBlockNodeView = ({
         </button> */}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
-          className="btn btn-xs text-lg btn-ghost p-0 opacity-0 group-hover:opacity-100 transition duration-200 ease-in-out"
+          className="btn btn-xs text-lg btn-ghost p-0 opacity-100 group-hover:opacity-100 transition duration-200 ease-in-out cursor-grab active:cursor-grabbing"
           contentEditable={false}
           draggable
           data-drag-handle
-          onDragStart={() => setIsCurrentNodeSelected(true)}
-          onDragEnd={() =>
-            setTimeout(() => setIsCurrentNodeSelected(false), 250)
-          }
         >
           <i className="i-ic-baseline-drag-indicator" />
         </div>
