@@ -8,6 +8,7 @@ import Strike from "@tiptap/extension-strike";
 import Underline from "@tiptap/extension-underline";
 import DropCursor from "@tiptap/extension-dropcursor";
 import GapCursor from "@tiptap/extension-gapcursor";
+import History from "@tiptap/extension-history";
 
 import { Document } from "./doc";
 import { DraggableBlock } from "./draggable-block";
@@ -31,6 +32,7 @@ export const getExtensions = ({ openLinkModal }: GetExtensionsProps) => {
       color: "skyblue",
     }),
     GapCursor,
+    History,
 
     // marks
     Bold,
