@@ -1,2 +1,2 @@
 # notitap-pro
-Pro version of Notitap.
+Pro version of [Notitap](https://github.com/sereneinserenade/notitap).
