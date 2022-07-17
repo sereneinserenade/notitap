@@ -13,6 +13,11 @@ export const CustomBubbleMenu: React.FC<CustomBubbleMenuProps> = ({
     <BubbleMenu
       editor={editor}
       className="shadow bg-white rounded-sm overflow-hidden border border-slate-200 box-border"
+      tippyOptions={{
+        duration: 200,
+        animation: "shift-toward-subtle",
+        moveTransition: "transform 0.2s ease-in-out",
+      }}
     >
       {generalButtons.map((btn) => {
         return (

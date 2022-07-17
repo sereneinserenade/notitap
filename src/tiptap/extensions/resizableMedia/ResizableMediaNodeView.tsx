@@ -238,9 +238,9 @@ export const ResizableMediaNodeView = ({
 
         <section
           className="
-          group-hover:opacity-100 opacity-0 absolute top-2 left-2 bg-white transition-all duration-200 ease-linear
-          shadow rounded-sm overflow-hidden border border-slate-200 box-border
-        "
+            group-hover:opacity-100 opacity-0 absolute top-2 left-2 bg-white transition-all duration-200 ease-linear
+            shadow-xl rounded-sm overflow-hidden border border-slate-200 box-border
+          "
         >
           {resizableMediaActions.map((btn) => {
             return (
@@ -249,7 +249,9 @@ export const ResizableMediaNodeView = ({
                 <button
                   type="button"
                   className={`btn btn-xs btn-ghost rounded-none h-8 px-2 ${
-                    mediaActionActiveState[btn.tooltip] ? "btn-active" : ""
+                    mediaActionActiveState[btn.tooltip]
+                      ? "btn-active text-black"
+                      : ""
                   }`}
                   onClick={() =>
                     btn.tooltip === "Delete"
