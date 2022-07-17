@@ -1,12 +1,13 @@
-import { useEditor, EditorContent } from "@tiptap/react";
+/* eslint-disable */
 import { Editor } from "@tiptap/core";
-import { useCallback, useEffect } from "react";
+import { EditorContent, useEditor } from "@tiptap/react";
+import { useCallback, useState } from "react";
 import "tippy.js/animations/shift-toward-subtle.css";
 // import applyDevTools from "prosemirror-dev-tools";
 
-import { extensions } from "./extensions";
+import { getExtensions } from "./extensions";
+import { CustomBubbleMenu, LinkBubbleMenu } from "./menus";
 import { content } from "./mocks";
-import { CustomBubbleMenu } from "./menus";
 
 import "./styles/tiptap.scss";
 
@@ -16,19 +17,11 @@ export const Tiptap = () => {
     []
   );
 
-  const editor = useEditor({
-    extensions,
-    content,
-    editorProps: {
-      attributes: {
-        class: "prose focus:outline-none w-full",
-        spellcheck: "false",
-      },
-    },
-    onUpdate({ editor: e }) {
-      logContent(e);
-    },
-  });
+  const [isAddingNewLink, setIsAddingNewLink] = useState(false);
+
+  const openLinkModal = () => setIsAddingNewLink(true);
+
+  const closeLinkModal = () => setIsAddingNewLink(false);
 
   const addImage = () =>
     editor?.commands.setMedia({
@@ -53,6 +46,20 @@ export const Tiptap = () => {
       height: "400",
     });
 
+  const editor = useEditor({
+    extensions: getExtensions({ openLinkModal }),
+    content,
+    editorProps: {
+      attributes: {
+        class: "prose focus:outline-none w-full",
+        spellcheck: "false",
+      },
+    },
+    onUpdate({ editor: e }) {
+      logContent(e);
+    },
+  });
+
   return (
     editor && (
       <section className="flex flex-col gap-2">
@@ -72,8 +79,12 @@ export const Tiptap = () => {
             Add Video
           </button>
         </span>
+
         <EditorContent className="w-full" editor={editor} />
+
         <CustomBubbleMenu editor={editor} />
+
+        <LinkBubbleMenu editor={editor} />
       </section>
     )
   );

@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.6",
+    "@tiptap/extension-link": "^2.0.0-beta.43",
     "@tiptap/extension-placeholder": "^2.0.0-beta.53",
     "@tiptap/react": "^2.0.0-beta.114",
     "@tiptap/starter-kit": "^2.0.0-beta.191",
     "@tiptap/suggestion": "^2.0.0-beta.97",
+    "classnames": "^2.3.1",
     "daisyui": "^2.19.0",
     "fuzzysort": "^2.0.1",
     "react": "^18.0.0",
