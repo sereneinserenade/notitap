@@ -10,6 +10,7 @@ import DropCursor from "@tiptap/extension-dropcursor";
 import GapCursor from "@tiptap/extension-gapcursor";
 import History from "@tiptap/extension-history";
 import HardBreak from "@tiptap/extension-hard-break";
+import Heading from "@tiptap/extension-heading";
 
 import { Document } from "./doc";
 import { DraggableBlock } from "./draggable-block";
@@ -53,5 +54,8 @@ export const getExtensions = ({ openLinkModal }: GetExtensionsProps) => {
     ListItem,
     BulletList,
     OrderedList,
+    Heading.configure({
+      levels: [1, 2, 3],
+    }),
   ];
 };

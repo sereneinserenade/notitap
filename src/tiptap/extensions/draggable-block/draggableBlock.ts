@@ -94,6 +94,7 @@ export const DraggableBlock = Node.create<DraggableBlockOptions>({
           }
 
           return chain()
+            .focus("start")
             .insertContentAt(
               { from, to: currentActiveNodeTo },
               {
@@ -106,7 +107,6 @@ export const DraggableBlock = Node.create<DraggableBlockOptions>({
                 ],
               }
             )
-            .focus("start")
             .focus(from + 3)
             .run();
         },

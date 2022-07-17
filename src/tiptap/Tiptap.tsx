@@ -13,6 +13,7 @@ import "tippy.js/animations/shift-toward-subtle.css";
 import { getExtensions } from "./extensions";
 import { CustomBubbleMenu, LinkBubbleMenu } from "./menus";
 import { content } from "./mocks";
+import { notitapEditorClass } from './proseClassString'
 
 import "./styles/tiptap.scss";
 
@@ -56,8 +57,7 @@ export const Tiptap = () => {
     content,
     editorProps: {
       attributes: {
-        // class: "prose focus:outline-none w-full",
-        class: "focus:outline-none w-full",
+        class: `${notitapEditorClass} focus:outline-none w-full`,
         spellcheck: "false",
         suppressContentEditableWarning: "true",
       },

@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App container mx-auto px-16 flex flex-col gap-4 max-w-[80ch]">
+    <div className="App container mx-auto px-16 flex flex-col gap-4 max-w-[100ch]">
       <header className="flex flex-col gap-2 py-4 border-b border-slate-400">
         <section className="flex flex-row items-center gap-4">
           <a
