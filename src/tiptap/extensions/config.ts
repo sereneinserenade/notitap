@@ -5,6 +5,7 @@ import { Commands, suggestions } from "../menus";
 import { ResizableMedia } from "./resizableMedia";
 import { CustomStarterKit } from "./starterKit";
 import { Link } from "./link";
+import { File } from "./file-upload";
 
 interface GetExtensionsProps {
   openLinkModal: () => void;
@@ -28,5 +29,7 @@ export const getExtensions = ({ openLinkModal }: GetExtensionsProps) => {
     }),
 
     ResizableMedia,
+
+    File,
   ];
 };
