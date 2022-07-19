@@ -46,6 +46,14 @@ export const Tiptap = () => {
       height: "400",
     });
 
+  const addFile = () =>
+    editor?.commands.setFile({
+      title: `File no ${Math.floor(Math.random() * 100)}`,
+      file: {
+        src: "https://source.unsplash.com/8xznAGy4HcY/800x400",
+      },
+    });
+
   const editor = useEditor({
     extensions: getExtensions({ openLinkModal }),
     content,
@@ -77,6 +85,13 @@ export const Tiptap = () => {
             onClick={() => addVideo()}
           >
             Add Video
+          </button>
+          <button
+            className="btn btn-sm btn-outline"
+            type="button"
+            onClick={() => addFile()}
+          >
+            Add File
           </button>
         </span>
 
