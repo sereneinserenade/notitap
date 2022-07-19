@@ -1,6 +1,18 @@
 # notitap
 
-Notion like editor built on top of [Tiptap](https://tiptap.dev/).
+Notion like editor built on top of [Tiptap](https://tiptap.dev/). [**Sponsor me**](https://github.com/sponsors/sereneinserenade/) to get access to the pro version. Here are some extra features of pro version.
+
+<details open="true">
+  <summary> <b> Pro Features </b> </summary>
+
+- Block Level Drag and Drop
+- Supercharged Tables(coming soon 🔜)
+- Image Resize functionality
+- File Upload
+- and much more to come!
+</details>
+
+
 
 ![GitHub Sponsors](https://img.shields.io/github/sponsors/sereneinserenade?color=%23bf3989&label=Sponsor%20Me&style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/sereneinserenade/notitap?label=Star%20the%20Repo&style=for-the-badge)
