@@ -45,10 +45,9 @@ export class TableRowNodeView implements NodeView {
     );
   }
 
-  deleteNode(): void {
-    const from = this.getPos();
-    const to = from + this.node.nodeSize;
-
-    this.editor.commands.deleteRange({ from, to });
-  }
+  // deleteNode(): void {
+  // const from = this.getPos();
+  // const to = from + this.node.nodeSize;
+  // this.editor.commands.deleteRange({ from, to });
+  // }
 }
