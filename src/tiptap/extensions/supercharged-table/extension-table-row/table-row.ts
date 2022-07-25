@@ -1,4 +1,6 @@
 import { mergeAttributes, Node } from "@tiptap/core";
+import { NodeSelection } from "prosemirror-state";
+import { stopPrevent } from "@/tiptap/utils";
 
 export interface TableRowOptions {
   HTMLAttributes: Record<string, any>;
@@ -6,15 +8,22 @@ export interface TableRowOptions {
 
 const getElementWithAttributes = (
   name: string,
-  attrs: Record<string, any> = {}
+  attrs?: Record<string, any>,
+  events?: Record<string, any>
 ) => {
   const el = document.createElement(name);
 
   if (!el) throw new Error(`Element with name ${name} can't be created.`);
 
-  Object.entries(attrs).forEach(([key, val]) => {
-    el.setAttribute(key, val);
-  });
+  if (attrs) {
+    Object.entries(attrs).forEach(([key, val]) => el.setAttribute(key, val));
+  }
+
+  if (events) {
+    Object.entries(events).forEach(([key, val]) =>
+      el.addEventListener(key, val)
+    );
+  }
 
   return el;
 };
@@ -44,42 +53,117 @@ export const TableRow = Node.create<TableRowOptions>({
     ];
   },
 
-  // addNodeView() {
-  //   return ({ editor, HTMLAttributes, getPos, node }) => {
-  //     // Markup
-  //     /*
-  //       <tr class="relative">
-  //         <section>
-  //           <button> Delete Row </button>
+  addNodeView() {
+    return ({
+      editor: {
+        state: { tr, doc },
+        view: { dispatch },
+      },
+      HTMLAttributes,
+      getPos,
+      node,
+    }) => {
+      // Markup
+      /*
+        <tr class="relative">
+          <section onClick={selectCurrentRow} class="absolute -translate-x-full">
+            <button class="absolute -translate-x-12"> D </button> <!-- Delete Row -->
+          </section>
 
-  //         </section>
+          <!-- NodeViewContent -->
+        </tr>
+      */
 
-  //         <div class="content"> </div>
-  //       </tr>
-  //     */
+      const pos = () => (getPos as () => number)();
 
-  //     const div = getElementWithAttributes("div");
+      const controlSection = getElementWithAttributes(
+        "section",
+        {
+          class: "absolute min-w-2 bg-gray-200 z-50 cursor-pointer",
+          "data-drag-handle": true,
+          contenteditable: "false",
+        },
+        {
+          click: (e: any) => {
+            if (e) stopPrevent(e);
 
-  //     const tr = getElementWithAttributes("tr", { class: "content" });
+            actions.selectRow();
+          },
+        }
+      );
 
-  //     const controlSection = getElementWithAttributes("section");
+      const deleteButton = getElementWithAttributes(
+        "button",
+        {
+          class: "btn btn-xs btn-ghost text-base absolute",
+        },
+        {
+          click: (e: any) => {
+            if (e) stopPrevent(e);
 
-  //     const deleteButton = getElementWithAttributes("button");
+            actions.deleteRow();
+          },
+        }
+      );
 
-  //     controlSection.append(deleteButton);
+      const actions = {
+        deleteRow: () => {
+          const from = pos();
+          const to = from + node.nodeSize;
+          this.editor.chain().deleteRange({ from, to }).focus().run();
+        },
+        selectRow: () => {
+          const from = pos();
 
-  //     const contentDOM = getElementWithAttributes("div", {
-  //       class: "content",
-  //     });
+          const resolvedFrom = doc.resolve(from);
 
-  //     // tr.append(contentDOM);
+          const nodeSel = new NodeSelection(resolvedFrom);
 
-  //     return {
-  //       dom: div,
-  //       contentDOM: tr,
-  //     };
-  //   };
-  // },
+          dispatch(tr.setSelection(nodeSel));
+        },
+      };
+
+      // const tableRow = getElementWithAttributes("tr", { class: "content" });
+      const tableRow = getElementWithAttributes(
+        "tr",
+        {},
+        { mouseenter: () => {}, mouseleave: () => {} }
+      );
+
+      deleteButton.textContent = "x";
+
+      controlSection.append(deleteButton);
+
+      const contentDOM = getElementWithAttributes("template", {
+        class: "content",
+      });
+
+      tableRow.append(contentDOM);
+
+      document.body.append(controlSection);
+
+      const repositionControlsCenter = () => {
+        const rowCoords = tableRow.getBoundingClientRect();
+
+        controlSection.style.top = `${rowCoords.top}px`;
+        controlSection.style.left = `${rowCoords.left - 10}px`;
+      };
+
+      const timedRepositionControlsCenter = () =>
+        setTimeout(repositionControlsCenter);
+
+      timedRepositionControlsCenter();
+
+      const destroy = () => controlSection.remove();
+
+      return {
+        dom: tableRow,
+        contentDOM: tableRow,
+        destroy,
+        update: timedRepositionControlsCenter,
+      };
+    };
+  },
 
   // addNodeView() {
   //   return ReactNodeViewRenderer(TableRowNodeView, {
