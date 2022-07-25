@@ -4,3 +4,13 @@
   * Proprietary and confidential
   * Written by Jeet Ajaybhai Mandaliya <jeet.mandaliya7@gmail.com>, 17th July 2022
 */
+
+body {
+  min-height: 100vh;
+
+
+}
+
+.App {
+  min-height: 100vh;
+}

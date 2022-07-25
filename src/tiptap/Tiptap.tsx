@@ -67,6 +67,9 @@ export const Tiptap = () => {
     },
   });
 
+  const addTable = () => editor?.commands.insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+
+
   return (
     editor && (
       <section className="flex flex-col gap-2 w-full">
@@ -84,6 +87,13 @@ export const Tiptap = () => {
             onClick={() => addVideo()}
           >
             Add Video
+          </button>
+          <button
+            className="btn btn-sm btn-outline"
+            type="button"
+            onClick={() => addTable()}
+          >
+            Add table
           </button>
         </span>
 
