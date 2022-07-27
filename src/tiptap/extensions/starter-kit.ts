@@ -18,6 +18,7 @@ import { DraggableBlock } from "./draggable-block";
 import { Link } from "./link";
 import { Paragraph } from "./paragraph";
 import { SuperchargedTableExtensions } from "./supercharged-table";
+import { ResizableMedia } from "./resizableMedia";
 
 interface GetExtensionsProps {
   openLinkModal: () => void;
@@ -64,5 +65,8 @@ export const getExtensions = ({
 
     // Table
     ...SuperchargedTableExtensions,
+
+    // Resizable Media
+    ResizableMedia,
   ];
 };

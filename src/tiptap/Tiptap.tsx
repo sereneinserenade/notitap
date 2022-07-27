@@ -72,7 +72,7 @@ export const Tiptap = () => {
 
   return (
     editor && (
-      <section className="flex flex-col gap-2 w-full">
+      <section className="flex flex-col gap-2 w-full justify-center">
         <span className="flex gap-2">
           <button
             className="btn btn-sm btn-outline"
@@ -97,7 +97,7 @@ export const Tiptap = () => {
           </button>
         </span>
 
-        <EditorContent className="w-full" editor={editor} />
+        <EditorContent className="w-full flex justify-center" editor={editor} />
 
         <CustomBubbleMenu editor={editor} />
 
