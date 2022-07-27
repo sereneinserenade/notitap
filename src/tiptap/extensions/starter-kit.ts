@@ -1,3 +1,4 @@
+import { AnyExtension } from "@tiptap/core";
 import Text from "@tiptap/extension-text";
 import BulletList from "@tiptap/extension-bullet-list";
 import OrderedList from "@tiptap/extension-ordered-list";
@@ -16,16 +17,19 @@ import { Document } from "./doc";
 import { DraggableBlock } from "./draggable-block";
 import { Link } from "./link";
 import { Paragraph } from "./paragraph";
+import { SuperchargedTableExtensions } from "./supercharged-table";
 
 interface GetExtensionsProps {
   openLinkModal: () => void;
 }
 
-export const getExtensions = ({ openLinkModal }: GetExtensionsProps) => {
+export const getExtensions = ({
+  openLinkModal,
+}: GetExtensionsProps): AnyExtension[] => {
   return [
     // Necessary
     Document,
-    DraggableBlock,
+    // DraggableBlock,
     Paragraph,
     Text,
     DropCursor.configure({
@@ -57,5 +61,8 @@ export const getExtensions = ({ openLinkModal }: GetExtensionsProps) => {
     Heading.configure({
       levels: [1, 2, 3],
     }),
+
+    // Table
+    ...SuperchargedTableExtensions,
   ];
 };

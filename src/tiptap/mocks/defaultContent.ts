@@ -9,70 +9,141 @@ export const content: Content = {
   type: "doc",
   content: [
     {
-      type: "draggableBlock",
+      type: "table",
       content: [
         {
-          type: "paragraph",
+          type: "tableRow",
           content: [
-            { type: "text", text: "1 Something I think should work there" },
+            {
+              type: "tableHeader",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
+            {
+              type: "tableHeader",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
+            {
+              type: "tableHeader",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
           ],
         },
-      ],
-    },
-    {
-      type: "draggableBlock",
-      content: [
         {
-          type: "paragraph",
+          type: "tableRow",
           content: [
-            { type: "text", text: "2 Something I think should work there" },
+            {
+              type: "tableCell",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
+            {
+              type: "tableCell",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
+            {
+              type: "tableCell",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
           ],
         },
-      ],
-    },
-    {
-      type: "draggableBlock",
-      content: [
         {
-          type: "paragraph",
+          type: "tableRow",
           content: [
-            { type: "text", text: "3 Something I think should work there" },
-          ],
-        },
-      ],
-    },
-    {
-      type: "draggableBlock",
-      content: [
-        {
-          type: "paragraph",
-          content: [
-            { type: "text", text: "4 Something I think should work there" },
-          ],
-        },
-      ],
-    },
-    {
-      type: "draggableBlock",
-      content: [
-        {
-          type: "paragraph",
-          content: [
-            { type: "text", text: "5 Something I think should work there" },
-          ],
-        },
-      ],
-    },
-    {
-      type: "draggableBlock",
-      content: [
-        {
-          type: "paragraph",
-          content: [
-            { type: "text", text: "6 Something I think should work there" },
+            {
+              type: "tableCell",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
+            {
+              type: "tableCell",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
+            {
+              type: "tableCell",
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: "paragraph" }],
+            },
           ],
         },
       ],
     },
   ],
 };
+
+// export const content: Content = {
+//   type: "doc",
+//   content: [
+//     {
+//       type: "draggableBlock",
+//       content: [
+//         {
+//           type: "paragraph",
+//           content: [
+//             { type: "text", text: "1 Something I think should work there" },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       type: "draggableBlock",
+//       content: [
+//         {
+//           type: "paragraph",
+//           content: [
+//             { type: "text", text: "2 Something I think should work there" },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       type: "draggableBlock",
+//       content: [
+//         {
+//           type: "paragraph",
+//           content: [
+//             { type: "text", text: "3 Something I think should work there" },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       type: "draggableBlock",
+//       content: [
+//         {
+//           type: "paragraph",
+//           content: [
+//             { type: "text", text: "4 Something I think should work there" },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       type: "draggableBlock",
+//       content: [
+//         {
+//           type: "paragraph",
+//           content: [
+//             { type: "text", text: "5 Something I think should work there" },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       type: "draggableBlock",
+//       content: [
+//         {
+//           type: "paragraph",
+//           content: [
+//             { type: "text", text: "6 Something I think should work there" },
+//           ],
+//         },
+//       ],
+//     },
+//   ],
+// };
