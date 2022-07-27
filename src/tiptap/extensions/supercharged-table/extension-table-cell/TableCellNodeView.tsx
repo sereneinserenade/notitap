@@ -9,36 +9,59 @@ import Tippy from "@tippyjs/react";
 interface CellButton {
   name: string;
   action: (editor: Editor) => boolean;
+  iconClass?: string;
 }
 
 const cellButtonsConfig: CellButton[] = [
   {
     name: "Add row above",
     action: (editor) => editor.chain().focus().addRowBefore().run(),
+    iconClass: "i-mdi-table-row-plus-before",
   },
   {
     name: "Add row below",
     action: (editor) => editor.chain().focus().addRowAfter().run(),
+    iconClass: "i-mdi-table-row-plus-after",
   },
   {
     name: "Add column before",
     action: (editor) => editor.chain().focus().addColumnBefore().run(),
+    iconClass: "i-mdi-table-column-plus-before",
   },
   {
     name: "Add column after",
     action: (editor) => editor.chain().focus().addColumnAfter().run(),
+    iconClass: "i-mdi-table-column-plus-after",
   },
   {
     name: "Remove row",
     action: (editor) => editor.chain().focus().deleteRow().run(),
+    iconClass: "i-mdi-table-row-remove",
   },
   {
     name: "Remove col",
     action: (editor) => editor.chain().focus().deleteColumn().run(),
+    iconClass: "i-mdi-table-column-remove",
+  },
+  {
+    name: "Toggle header row",
+    action: (editor) => editor.chain().focus().toggleHeaderRow().run(),
+    iconClass: "i-mdi-table-row",
+  },
+  {
+    name: "Toggle header column",
+    action: (editor) => editor.chain().focus().toggleHeaderColumn().run(),
+    iconClass: "i-mdi-table-column",
+  },
+  {
+    name: "Toggle header cell",
+    action: (editor) => editor.chain().focus().toggleHeaderCell().run(),
+    iconClass: "i-mdi-table-border",
   },
   {
     name: "Remove table",
     action: (editor) => editor.chain().focus().deleteTable().run(),
+    iconClass: "i-mdi-table-remove",
   },
 ];
 
@@ -87,6 +110,7 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
   return (
     <NodeViewWrapper>
       <NodeViewContent as="span" />
+
       {(isCurrentCellActive || selected) && (
         <Tippy
           appendTo={document.body}
@@ -94,19 +118,27 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
           interactive
           content={
             <article
-              className="dropdown dropdown-open z-50"
+              className="dropdown dropdown-open z-50 translate-x-2"
               contentEditable={false}
             >
               <ul
                 tabIndex={0}
-                className="dropdown-content fixed menu menu-compact p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content fixed menu menu-compact p-2 shadow bg-base-100 rounded-box w-56"
                 style={gimmeDropdownStyles()}
               >
                 {cellButtonsConfig.map((btn) => {
                   return (
                     <li key={btn.name}>
-                      <button type="button" onClick={() => btn.action(editor)}>
-                        {btn.name}
+                      <button
+                        type="button"
+                        className="flex gap-2"
+                        onClick={() => btn.action(editor)}
+                      >
+                        <span>
+                          <i className={btn.iconClass} />
+                        </span>
+
+                        <span>{btn.name}</span>
                       </button>
                     </li>
                   );
@@ -117,10 +149,10 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
         >
           <label
             tabIndex={0}
-            className="absolute right-0 bottom-0 btn btn-xs px-1 text-base m-1"
+            className="absolute right-0 bottom-0 btn btn-xs p-px py-0 text-base m-1"
             contentEditable={false}
           >
-            <i className="i-mdi-chevron-down" />
+            <i className="i-mdi-chevron-down text-base scale-150" />
           </label>
         </Tippy>
       )}
