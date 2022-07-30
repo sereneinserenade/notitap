@@ -147,8 +147,8 @@ export const TableRow = Node.create<TableRowOptions>({
 
         if (rectBefore === stringifiedRowCoords) return;
 
-        controlSection.style.top = `${rowCoords.top}px`;
-        controlSection.style.left = `${rowCoords.left - 8}px`;
+        controlSection.style.top = `${rowCoords.top + window.scrollY}px`;
+        controlSection.style.left = `${rowCoords.left + window.scrollX - 8}px`;
         controlSection.style.height = `${rowCoords.height + 1}px`;
         // controlSection.style.width = `${rowCoords.width}px`;
 

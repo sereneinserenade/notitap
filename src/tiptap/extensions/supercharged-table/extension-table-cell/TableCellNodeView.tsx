@@ -116,6 +116,7 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
           appendTo={document.body}
           trigger="click"
           interactive
+          animation="shift-toward-subtle"
           content={
             <article
               className="dropdown dropdown-open z-50 translate-x-2"
