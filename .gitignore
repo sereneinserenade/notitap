@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 .npmrc
+.env
+sponsorkit/.cache.json
+sponsorkit/sponsors.json
+sponsorkit/sponsors.png

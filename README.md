@@ -18,6 +18,10 @@ Visit https://sereneinserenade.github.io/notitap-secret/ for a live demo.
 
 Video coming 🔜
 
+## Sponsors:
+
+[![My Sponsors](./sponsorkit/sponsors.svg)](https://github.com/sponsors/sereneinserenade#sponsors)
+
 ## Contributing
 
 **[:heart: Sponsor me](https://github.com/sponsors/sereneinserenade)** to make it possible for me to work on . You can also show your ❤️ by ⭐️ing this repository. Your support means a lot.
