@@ -14,7 +14,7 @@ I've made a bunch of extensions for Tiptap 2, some of them are **Resiable Images
 
 ## Demo:
 
-Visit https://sereneinserenade.github.io/notitap-pro/ for a live demo.
+Visit https://sereneinserenade.github.io/notitap-secret/ for a live demo.
 
 Video coming 🔜
 
