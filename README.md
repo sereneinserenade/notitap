@@ -16,9 +16,15 @@ I've made a bunch of extensions for Tiptap 2, some of them are **Resiable Images
 
 Visit https://sereneinserenade.github.io/notitap-secret/ for a live demo.
 
-Video coming 🔜
+<details>
+  <summary> <h4> Click to see the video </h4> </summary>
+
+  https://user-images.githubusercontent.com/45892659/184548594-125208cb-b55b-4e3d-90a0-0b259eb1e102.mp4
+</details>
 
 ## Sponsors:
+
+**This project is made possible thanks to these amazing orgs/people.**
 
 [![My Sponsors](./sponsorkit/sponsors.svg)](https://github.com/sponsors/sereneinserenade#sponsors)
 
