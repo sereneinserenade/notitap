@@ -72,15 +72,14 @@
       margin: 0;
     }
   }
+}
 
-  .tableWrapper {
-    padding: 1rem 0;
-    overflow-x: auto;
-  }
+.tableWrapper {
+  padding: 1rem 0;
+  overflow-x: auto;
+}
 
-  .resize-cursor {
-    cursor: ew-resize;
-    cursor: col-resize;
-  }
-
+.resize-cursor {
+  cursor: ew-resize;
+  cursor: col-resize;
 }

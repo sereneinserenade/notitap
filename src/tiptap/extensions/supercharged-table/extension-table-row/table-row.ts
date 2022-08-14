@@ -142,17 +142,21 @@ export const TableRow = Node.create<TableRowOptions>({
       let rectBefore = "";
 
       const repositionControlsCenter = () => {
-        const rowCoords = tableRow.getBoundingClientRect();
-        const stringifiedRowCoords = JSON.stringify(rowCoords);
+        setTimeout(() => {
+          const rowCoords = tableRow.getBoundingClientRect();
+          const stringifiedRowCoords = JSON.stringify(rowCoords);
 
-        if (rectBefore === stringifiedRowCoords) return;
+          if (rectBefore === stringifiedRowCoords) return;
 
-        controlSection.style.top = `${rowCoords.top + window.scrollY}px`;
-        controlSection.style.left = `${rowCoords.left + window.scrollX - 8}px`;
-        controlSection.style.height = `${rowCoords.height + 1}px`;
-        // controlSection.style.width = `${rowCoords.width}px`;
+          controlSection.style.top = `${rowCoords.top + window.scrollY}px`;
+          controlSection.style.left = `${
+            rowCoords.left + window.scrollX - 8
+          }px`;
+          controlSection.style.height = `${rowCoords.height + 1}px`;
+          // controlSection.style.width = `${rowCoords.width}px`;
 
-        rectBefore = stringifiedRowCoords;
+          rectBefore = stringifiedRowCoords;
+        });
       };
 
       // const timedRepositionControlsCenter = () =>

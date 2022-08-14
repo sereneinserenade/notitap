@@ -46,26 +46,6 @@ export const resizableMediaActions: ResizableMediaAction[] = [
     isActive: (attrs) => attrs.dataAlign === "right",
   },
   {
-    tooltip: "Float left",
-    action: (updateAttributes) =>
-      updateAttributes({
-        dataAlign: null,
-        dataFloat: "left",
-      }),
-    icon: "i-mdi-format-float-left",
-    isActive: (attrs) => attrs.dataFloat === "left",
-  },
-  {
-    tooltip: "Float right",
-    action: (updateAttributes) =>
-      updateAttributes({
-        dataAlign: null,
-        dataFloat: "right",
-      }),
-    icon: "i-mdi-format-float-right",
-    isActive: (attrs) => attrs.dataFloat === "right",
-  },
-  {
     tooltip: "Delete",
     icon: "i-mdi-delete",
     delete: (deleteNode) => deleteNode(),

@@ -200,10 +200,9 @@ export const ResizableMediaNodeView = ({
     <NodeViewWrapper
       as="article"
       className={`
-        media-node-view flex pos-relative not-prose
+        media-node-view flex pos-relative not-prose w-full my-2
         ${(isFloat && `f-${node.attrs.dataFloat}`) || ""}
         ${(isAlign && `align-${node.attrs.dataAlign}`) || ""}
-        group
       `}
     >
       <div className="w-fit flex relative">
@@ -211,7 +210,7 @@ export const ResizableMediaNodeView = ({
           <img
             src={node.attrs.src}
             ref={resizableImgRef as any}
-            className={`rounded-lg ${`float-${node.attrs.dataFloat}`} ${`align-${node.attrs.dataAlign}`}`}
+            className={`rounded-lg group-hover:fore ${`float-${node.attrs.dataFloat}`} ${`align-${node.attrs.dataAlign}`}`}
             draggable="true"
             alt={node.attrs.src}
             width={node.attrs.width}

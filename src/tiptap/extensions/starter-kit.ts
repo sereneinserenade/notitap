@@ -14,11 +14,12 @@ import HardBreak from "@tiptap/extension-hard-break";
 import Heading from "@tiptap/extension-heading";
 
 import { Document } from "./doc";
-import { DraggableBlock } from "./draggable-block";
+import { DBlock } from "./dBlock";
 import { Link } from "./link";
 import { Paragraph } from "./paragraph";
 import { SuperchargedTableExtensions } from "./supercharged-table";
 import { ResizableMedia } from "./resizableMedia";
+import { TrailingNode } from "./trailingNode";
 
 interface GetExtensionsProps {
   openLinkModal: () => void;
@@ -30,7 +31,7 @@ export const getExtensions = ({
   return [
     // Necessary
     Document,
-    // DraggableBlock,
+    DBlock,
     Paragraph,
     Text,
     DropCursor.configure({
@@ -62,6 +63,7 @@ export const getExtensions = ({
     Heading.configure({
       levels: [1, 2, 3],
     }),
+    TrailingNode,
 
     // Table
     ...SuperchargedTableExtensions,

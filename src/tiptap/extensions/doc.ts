@@ -6,5 +6,5 @@ export const Document = Node.create({
   topNode: true,
 
   // content: "draggableBlock{1,}", // accepts one or more draggable block as content
-  content: "block+",
+  content: "dBlock+",
 });

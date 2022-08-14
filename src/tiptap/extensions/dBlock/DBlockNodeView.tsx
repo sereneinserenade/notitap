@@ -4,12 +4,16 @@
 // Proprietary and confidential
 // Written by Jeet Ajaybhai Mandaliya <jeet.mandaliya7@gmail.com>, 17th July 2022
 
-import React from "react";
+import React, { useMemo } from "react";
 import { NodeViewWrapper, NodeViewProps, NodeViewContent } from "@tiptap/react";
 
-// import "./styles.scss";
+export const DBlockNodeView: React.FC<NodeViewProps> = ({ node }) => {
+  const isTable = useMemo(() => {
+    const { content } = node.content as any;
 
-export const DraggableBlockNodeView: React.FC<NodeViewProps> = () => {
+    return content[0].type.name === "table";
+  }, [node.content]);
+
   return (
     <NodeViewWrapper as="div" className="flex gap-2 group w-full">
       <section
@@ -31,7 +35,9 @@ export const DraggableBlockNodeView: React.FC<NodeViewProps> = () => {
         </div>
       </section>
 
-      <NodeViewContent />
+      <NodeViewContent
+        className={`node-view-content w-full ${isTable ? "ml-6" : ""}`}
+      />
     </NodeViewWrapper>
   );
 };

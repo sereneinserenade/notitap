@@ -6,6 +6,7 @@
 /* eslint-disable */
 import { Editor } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
+import { debounce } from 'lodash';
 import { useCallback, useState } from "react";
 import "tippy.js/animations/shift-toward-subtle.css";
 // import applyDevTools from "prosemirror-dev-tools";
@@ -62,9 +63,9 @@ export const Tiptap = () => {
         suppressContentEditableWarning: "true",
       },
     },
-    onUpdate({ editor: e }) {
+    onUpdate: debounce(({ editor: e }) => {
       logContent(e);
-    },
+    }, 500),
   });
 
   const addTable = () => editor?.commands.insertTable({ rows: 3, cols: 3, withHeaderRow: true })

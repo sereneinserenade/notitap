@@ -17,7 +17,7 @@
   }
   .horizontal-resize-handle,
   .vertical-resize-handle {
-    @apply absolute hover:bg-blue-200 z-50 opacity-50
+    @apply absolute group-hover:bg-blue-200 z-50 opacity-50
   }
   .horizontal-resize-handle {
     @apply h-full w-2 top-0 right-0 cursor-col-resize
