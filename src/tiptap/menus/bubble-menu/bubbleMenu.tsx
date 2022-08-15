@@ -7,6 +7,8 @@ import { BubbleMenu, Editor } from "@tiptap/react";
 
 import { generalButtons } from "./buttons";
 
+import "./styles.scss";
+
 interface CustomBubbleMenuProps {
   editor: Editor;
 }
@@ -17,7 +19,7 @@ export const CustomBubbleMenu: React.FC<CustomBubbleMenuProps> = ({
   return (
     <BubbleMenu
       editor={editor}
-      className="shadow bg-white rounded-sm overflow-hidden border border-slate-200 box-border"
+      className="bubble-menu"
       tippyOptions={{
         duration: 200,
         animation: "shift-toward-subtle",
@@ -30,7 +32,7 @@ export const CustomBubbleMenu: React.FC<CustomBubbleMenuProps> = ({
           <div className="tooltip" key={btn.tooltip} data-tip={btn.tooltip}>
             <button
               type="button"
-              className="btn btn-xs btn-ghost rounded-none h-8 px-2"
+              className="bubble-menu-button"
               onClick={() => btn.action(editor)}
             >
               <i className={`${btn.iconClass} scale-150`} />

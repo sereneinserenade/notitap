@@ -200,18 +200,17 @@ export const ResizableMediaNodeView = ({
     <NodeViewWrapper
       as="article"
       className={`
-        media-node-view flex pos-relative not-prose w-full my-2
+        media-node-view not-prose
         ${(isFloat && `f-${node.attrs.dataFloat}`) || ""}
         ${(isAlign && `align-${node.attrs.dataAlign}`) || ""}
       `}
     >
-      <div className="w-fit flex relative">
+      <div className="w-fit flex relative group">
         {mediaType === "img" && (
           <img
             src={node.attrs.src}
             ref={resizableImgRef as any}
-            className={`rounded-lg group-hover:fore ${`float-${node.attrs.dataFloat}`} ${`align-${node.attrs.dataAlign}`}`}
-            draggable="true"
+            className={`rounded-lg ${`float-${node.attrs.dataFloat}`} ${`align-${node.attrs.dataAlign}`}`}
             alt={node.attrs.src}
             width={node.attrs.width}
             height={node.attrs.height}
@@ -222,7 +221,6 @@ export const ResizableMediaNodeView = ({
           <video
             ref={resizableImgRef as any}
             className={`rounded-lg ${`float-${node.attrs.dataFloat}`} ${`align-${node.attrs.dataAlign}`}`}
-            draggable="true"
             controls
             width={node.attrs.width}
             height={node.attrs.height}
@@ -232,41 +230,30 @@ export const ResizableMediaNodeView = ({
         )}
 
         <div
-          className={`horizontal-resize-handle ${
-            isHorizontalResizeActive ? "horizontal-resize-active" : ""
-          }`}
+          className="horizontal-resize-handle group-hover:bg-black group-hover:border-2 group-hover:border-white"
           title="Resize"
           onClick={({ clientX }) => setLastClientX(clientX)}
           onMouseDown={startHorizontalResize}
           onMouseUp={stopHorizontalResize}
         />
 
-        <section
-          className="
-            group-hover:opacity-100 opacity-0 absolute top-2 left-2 bg-white transition-all duration-200 ease-linear
-            shadow-xl rounded-sm overflow-hidden border border-slate-200 box-border
-          "
-        >
+        <section className="media-control-buttons hidden group-hover:flex">
           {resizableMediaActions.map((btn) => {
             return (
               // TODO: figure out why tooltips are not working
-              <div className="tooltip" key={btn.tooltip} data-tip={btn.tooltip}>
-                <button
-                  type="button"
-                  className={`btn btn-xs btn-ghost rounded-none h-8 px-2 ${
-                    mediaActionActiveState[btn.tooltip]
-                      ? "btn-active text-black"
-                      : ""
-                  }`}
-                  onClick={() =>
-                    btn.tooltip === "Delete"
-                      ? deleteNode()
-                      : btn.action?.(updateAttributes)
-                  }
-                >
-                  <i className={`${btn.icon} scale-150`} />
-                </button>
-              </div>
+              <button
+                type="button"
+                className={`btn rounded-none h-8 px-2 ${
+                  mediaActionActiveState[btn.tooltip] ? "active" : ""
+                }`}
+                onClick={() =>
+                  btn.tooltip === "Delete"
+                    ? deleteNode()
+                    : btn.action?.(updateAttributes)
+                }
+              >
+                <i className={`${btn.icon} scale-150`} />
+              </button>
             );
           })}
         </section>

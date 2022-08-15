@@ -104,7 +104,7 @@ export const TableRow = Node.create<TableRowOptions>({
         "button",
         {
           class:
-            "btn btn-xs btn-ghost text-sm px-1 absolute -translate-x-[125%] hover:active:-translate-x-[125%] mr-2",
+            "text-sm px-1 absolute -translate-x-[125%] hover:active:-translate-x-[125%] mr-2",
         },
         {
           click: (e: any) => {

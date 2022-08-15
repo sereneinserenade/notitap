@@ -1,0 +1,11 @@
+.bubble-menu {
+  @apply flex shadow bg-white rounded-sm overflow-hidden border border-slate-200 box-border;
+
+  .bubble-menu-button {
+    @apply inline-flex items-center p-2  border border-transparent text-xs font-medium text-gray-700 bg-gray-100 hover:bg-gray-200;
+
+    &.active {
+      @apply bg-gray-300;
+    }
+  }
+}

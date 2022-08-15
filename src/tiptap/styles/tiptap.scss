@@ -10,6 +10,47 @@
     content: attr(data-placeholder);
   }
 
+  .media-node-view {
+    @apply flex relative w-full my-2;
+
+    &.f-left {
+      @apply float-left
+    }
+  
+    &.f-right {
+      @apply float-right
+    }
+  
+    &.align-left {
+      @apply justify-start
+    }
+  
+    &.align-center {
+      @apply justify-center
+    }
+  
+    &.align-right {
+      @apply justify-end
+    }
+  
+    .horizontal-resize-handle {
+      @apply h-24 w-2.5 top-[50%] right-1 cursor-col-resize absolute z-50 opacity-50 translate-y-[-50%] rounded 
+    }
+
+    .btn {
+      @apply inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium text-gray-700 bg-gray-100 hover:bg-gray-200
+    }
+
+    .btn.active {
+      @apply bg-gray-300
+    }
+
+    .media-control-buttons {
+      @apply absolute top-2 left-2 bg-white transition-all duration-200 ease-linear shadow-xl rounded-sm overflow-hidden border border-slate-200 box-border
+    }
+  }
+
+
   table {
     border-collapse: collapse;
     table-layout: fixed;
@@ -71,6 +112,10 @@
     p {
       margin: 0;
     }
+  }
+
+  .drag-handle {
+    @apply bg-gray-200 hover:bg-gray-300 cursor-grab text-lg py-1 opacity-0 transition duration-200 ease-in-out text-black h-fit rounded flex justify-center items-center
   }
 }
 

@@ -26,7 +26,7 @@ export const DBlockNodeView: React.FC<NodeViewProps> = ({ node }) => {
         </button> */}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
-          className="btn btn-xs text-lg btn-ghost p-0 opacity-0 group-hover:opacity-100 transition duration-200 ease-in-out cursor-grab active:cursor-grabbing"
+          className="drag-handle group-hover:opacity-100"
           contentEditable={false}
           draggable
           data-drag-handle

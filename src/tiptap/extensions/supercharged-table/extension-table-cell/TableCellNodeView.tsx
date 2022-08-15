@@ -150,7 +150,7 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
         >
           <label
             tabIndex={0}
-            className="absolute right-0 bottom-0 btn btn-xs p-px py-0 text-base m-1"
+            className="absolute right-0 bottom-0 p-px py-0 text-base m-1"
             contentEditable={false}
           >
             <i className="i-mdi-chevron-down text-base scale-150" />

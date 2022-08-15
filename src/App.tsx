@@ -19,10 +19,10 @@ function App() {
             notitap-pro <i className="i-mdi-github" />
           </a>
           <a
-            className="btn btn-secondary btn-outline btn-sm"
+            className="text-pink-400 border border-pink-400 rounded-xl p-2 flex items-center justify-center"
             href="https://github.com/sponsors/sereneinserenade"
           >
-            <i className="i-mdi-heart mr-2" /> Support My Work
+            <i className="i-mdi-heart mr-2 scale-150" /> Support My Work
           </a>
         </section>
         <p className="text-md pl-[1px]">
@@ -36,7 +36,7 @@ function App() {
           A Big thank you to all my{" "}
           <a
             className="text-pink-400"
-            href="https://github.com/sponsors/sereneinserenade"
+            href="https://github.com/sponsors/sereneinserenade#sponsors"
           >
             <i className="i-mdi-heart-outline" /> sponsors.
           </a>{" "}
