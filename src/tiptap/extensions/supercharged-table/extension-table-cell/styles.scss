@@ -1,0 +1,20 @@
+.dropdown {
+  @apply bg-white w-52 z-50 translate-x-[52%];
+
+  .dropdown-content {
+    @apply bg-white flex flex-col;
+
+    .button {
+      @apply flex gap-2 text-black py-1 px-2 w-full rounded-lg items-center;
+
+      &:hover {
+        @apply bg-gray-100;
+      }
+    }
+  }
+
+}
+
+.trigger-button {
+  @apply absolute right-0 bottom-0 flex justify-center items-center p-px py-0 text-base m-1 bg-black text-white rounded cursor-pointer;
+}

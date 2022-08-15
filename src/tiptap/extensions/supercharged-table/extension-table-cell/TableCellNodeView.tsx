@@ -4,7 +4,8 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import { NodeViewContent, NodeViewWrapper, NodeViewProps } from "@tiptap/react";
 import { Editor } from "@tiptap/core";
 import Tippy from "@tippyjs/react";
-// import "tippy.js/dist/tippy.css"; // optional
+
+import "./styles.scss";
 
 interface CellButton {
   name: string;
@@ -118,10 +119,7 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
           interactive
           animation="shift-toward-subtle"
           content={
-            <article
-              className="dropdown dropdown-open z-50 translate-x-2"
-              contentEditable={false}
-            >
+            <article className="dropdown" contentEditable={false}>
               <ul
                 tabIndex={0}
                 className="dropdown-content fixed menu menu-compact p-2 shadow bg-base-100 rounded-box w-56"
@@ -132,7 +130,7 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
                     <li key={btn.name}>
                       <button
                         type="button"
-                        className="flex gap-2"
+                        className="button"
                         onClick={() => btn.action(editor)}
                       >
                         <span>
@@ -150,7 +148,7 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
         >
           <label
             tabIndex={0}
-            className="absolute right-0 bottom-0 p-px py-0 text-base m-1"
+            className="trigger-button"
             contentEditable={false}
           >
             <i className="i-mdi-chevron-down text-base scale-150" />
