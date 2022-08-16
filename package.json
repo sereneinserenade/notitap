@@ -28,7 +28,8 @@
     "fuzzysort": "^2.0.1",
     "lodash": "^4.17.21",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@iconify-json/ic": "^1.1.7",

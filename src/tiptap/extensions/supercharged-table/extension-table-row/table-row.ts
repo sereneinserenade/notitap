@@ -7,6 +7,24 @@ export interface TableRowOptions {
   HTMLAttributes: Record<string, any>;
 }
 
+const isScrollable = function (ele: any) {
+  const hasScrollableContent = ele.scrollHeight > ele.clientHeight;
+
+  const overflowYStyle = window.getComputedStyle(ele).overflowY;
+  const isOverflowHidden = overflowYStyle.indexOf("hidden") !== -1;
+
+  return hasScrollableContent && !isOverflowHidden;
+};
+
+const getScrollableParent = function (ele: any) {
+  // eslint-disable-next-line no-nested-ternary
+  return !ele || ele === document.body
+    ? document.body
+    : isScrollable(ele)
+    ? ele
+    : getScrollableParent(ele.parentNode);
+};
+
 const getElementWithAttributes = (
   name: string,
   attrs?: Record<string, any>,
@@ -55,7 +73,7 @@ export const TableRow = Node.create<TableRowOptions>({
   },
 
   addNodeView() {
-    return ({ editor, HTMLAttributes, getPos, node }) => {
+    return ({ editor, HTMLAttributes, getPos }) => {
       // Markup
       /*
         <tr class="relative">
@@ -68,6 +86,8 @@ export const TableRow = Node.create<TableRowOptions>({
       */
 
       const pos = () => (getPos as () => number)();
+
+      let isCursorInsideControlSection = false;
 
       const actions = {
         deleteRow: () => {
@@ -84,6 +104,14 @@ export const TableRow = Node.create<TableRowOptions>({
         },
       };
 
+      const setCursorInsideControlSection = () => {
+        isCursorInsideControlSection = true;
+      };
+
+      const setCursorOutsideControlSection = () => {
+        isCursorInsideControlSection = true;
+      };
+
       const controlSection = getElementWithAttributes(
         "section",
         {
@@ -96,6 +124,16 @@ export const TableRow = Node.create<TableRowOptions>({
             if (e) stopPrevent(e);
 
             actions.selectRow();
+          },
+          mouseenter: () => {
+            setCursorInsideControlSection();
+          },
+          mouseover: () => {
+            setCursorInsideControlSection();
+          },
+          mouseleave: () => {
+            setCursorOutsideControlSection();
+            hideControls();
           },
         }
       );
@@ -117,10 +155,15 @@ export const TableRow = Node.create<TableRowOptions>({
 
       const showControls = () => {
         repositionControlsCenter();
-        controlSection.classList.remove("opacity-25");
+        controlSection.classList.remove("hidden");
       };
 
-      const hideControls = () => controlSection.classList.add("opacity-25");
+      const hideControls = () => {
+        setTimeout(() => {
+          if (isCursorInsideControlSection) return;
+          controlSection.classList.add("hidden");
+        }, 100);
+      };
 
       // const tableRow = getElementWithAttributes("tr", { class: "content" });
       const tableRow = getElementWithAttributes(
@@ -148,19 +191,17 @@ export const TableRow = Node.create<TableRowOptions>({
 
           if (rectBefore === stringifiedRowCoords) return;
 
-          controlSection.style.top = `${rowCoords.top + window.scrollY}px`;
+          controlSection.style.top = `${
+            rowCoords.top + document.documentElement.scrollTop
+          }px`;
           controlSection.style.left = `${
-            rowCoords.left + window.scrollX - 8
+            rowCoords.x + document.documentElement.scrollLeft - 8
           }px`;
           controlSection.style.height = `${rowCoords.height + 1}px`;
-          // controlSection.style.width = `${rowCoords.width}px`;
 
           rectBefore = stringifiedRowCoords;
         });
       };
-
-      // const timedRepositionControlsCenter = () =>
-      //   throttle(repositionControlsCenter, 100);
 
       setTimeout(() => {
         repositionControlsCenter();
