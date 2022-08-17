@@ -114,7 +114,7 @@
     }
   }
 
-  .drag-handle {
+  .d-block-button {
     @apply bg-gray-200 hover:bg-gray-300 cursor-grab text-lg py-1 opacity-0 transition duration-200 ease-in-out text-black h-fit rounded flex justify-center items-center
   }
 }

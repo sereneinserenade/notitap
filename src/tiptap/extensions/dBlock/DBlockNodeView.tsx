@@ -7,26 +7,47 @@
 import React, { useMemo } from "react";
 import { NodeViewWrapper, NodeViewProps, NodeViewContent } from "@tiptap/react";
 
-export const DBlockNodeView: React.FC<NodeViewProps> = ({ node }) => {
+export const DBlockNodeView: React.FC<NodeViewProps> = ({
+  node,
+  getPos,
+  editor,
+}) => {
   const isTable = useMemo(() => {
     const { content } = node.content as any;
 
     return content[0].type.name === "table";
   }, [node.content]);
 
+  const createNodeAfter = () => {
+    const pos = getPos() + node.nodeSize;
+
+    editor.commands.insertContentAt(pos, {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    });
+  };
+
   return (
     <NodeViewWrapper as="div" className="flex gap-2 group w-full">
       <section
-        className="flex mt-2 pt-[2px]"
+        className="flex mt-2 pt-[2px] gap-1"
         aria-label="left-menu"
         contentEditable="false"
       >
-        {/* <button type="button" className="btn btn-ghost btn-sm">
+        <button
+          type="button"
+          className="d-block-button group-hover:opacity-100"
+          onClick={createNodeAfter}
+        >
           <i className="i-mdi-plus" />
-        </button> */}
+        </button>
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
-          className="drag-handle group-hover:opacity-100"
+          className="d-block-button group-hover:opacity-100"
           contentEditable={false}
           draggable
           data-drag-handle
