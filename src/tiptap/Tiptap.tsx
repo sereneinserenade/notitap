@@ -9,7 +9,6 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import { debounce } from 'lodash';
 import { useCallback, useState } from "react";
 import "tippy.js/animations/shift-toward-subtle.css";
-import 'tippy.js/dist/tippy.css';
 // import applyDevTools from "prosemirror-dev-tools";
 
 import { getExtensions } from "./extensions";

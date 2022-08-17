@@ -19,7 +19,7 @@ function App() {
             notitap-pro <i className="i-mdi-github" />
           </a>
           <a
-            className="text-pink-400 border border-pink-400 rounded-xl p-2 flex items-center justify-center"
+            className="text-pink-400 border border-pink-400 rounded-xl p-2 flex items-center justify-center hover:text-white hover:bg-pink-400 transition-all duration-200"
             href="https://github.com/sponsors/sereneinserenade"
           >
             <i className="i-mdi-heart mr-2 scale-150" /> Support My Work
@@ -27,7 +27,7 @@ function App() {
         </section>
         <p className="text-md pl-[1px]">
           Notion like editor built on top of{" "}
-          <a className="link" href="https://tiptap.dev/">
+          <a className="underline" href="https://tiptap.dev/">
             Tiptap.
           </a>
         </p>
@@ -35,7 +35,7 @@ function App() {
         <p className="text-md pl-[1px]">
           A Big thank you to all my{" "}
           <a
-            className="text-pink-400"
+            className="text-pink-400 underline"
             href="https://github.com/sponsors/sereneinserenade#sponsors"
           >
             <i className="i-mdi-heart-outline" /> sponsors.

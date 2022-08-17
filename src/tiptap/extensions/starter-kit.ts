@@ -75,12 +75,18 @@ export const getExtensions = ({
 
         fd.append("file", image);
 
-        const response = await fetch("https://api.imgur.com/3/image", {
-          method: "POST",
-          body: fd,
-        });
+        try {
+          const response = await fetch("https://api.imgur.com/3/image", {
+            method: "POST",
+            body: fd,
+          });
 
-        console.log(await response.json());
+          console.log(await response.json());
+        } catch {
+          // do your thing
+        } finally {
+          // do your thing
+        }
 
         return "https://source.unsplash.com/8xznAGy4HcY/800x400";
       },

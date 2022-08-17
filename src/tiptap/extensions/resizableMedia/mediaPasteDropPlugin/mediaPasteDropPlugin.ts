@@ -2,30 +2,30 @@ import { Plugin, PluginKey } from "prosemirror-state";
 
 export type UploadFnType = (image: File) => Promise<string>;
 
-export const getMediaDropPlugin = (upload: UploadFnType) => {
+export const getMediaPasteDropPlugin = (upload: UploadFnType) => {
   return new Plugin({
-    key: new PluginKey("media-drop"),
+    key: new PluginKey("media-paste-drop"),
     props: {
       handlePaste(view, event) {
         const items = Array.from(event.clipboardData?.items || []);
         const { schema } = view.state;
 
         items.forEach((item) => {
-          const image = item.getAsFile();
+          const file = item.getAsFile();
 
           const isImageOrVideo =
-            item.type.indexOf("image") === 0 ||
-            item.type.indexOf("video") === 0;
+            file?.type.indexOf("image") === 0 ||
+            file?.type.indexOf("video") === 0;
 
           if (isImageOrVideo) {
             event.preventDefault();
 
-            if (upload && image) {
-              upload(image).then((src) => {
+            if (upload && file) {
+              upload(file).then((src) => {
                 const node = schema.nodes.resizableMedia.create({
                   src,
                   "media-type":
-                    item.type.indexOf("image") === 0 ? "img" : "video",
+                    file.type.indexOf("image") === 0 ? "img" : "video",
                 });
 
                 const transaction = view.state.tr.replaceSelectionWith(node);
@@ -45,9 +45,9 @@ export const getMediaDropPlugin = (upload: UploadFnType) => {
               view.dispatch(transaction);
             };
 
-            if (!image) return;
+            if (!file) return;
 
-            reader.readAsDataURL(image);
+            reader.readAsDataURL(file);
           }
         });
 
