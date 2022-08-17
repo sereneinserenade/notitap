@@ -1,7 +1,6 @@
 import { mergeAttributes, Node } from "@tiptap/core";
 import { NodeSelection } from "prosemirror-state";
-import { throttle } from "lodash";
-import { debounce, stopPrevent } from "@/tiptap/utils";
+import { stopPrevent } from "@/tiptap/utils";
 
 export interface TableRowOptions {
   HTMLAttributes: Record<string, any>;
@@ -16,7 +15,7 @@ const isScrollable = function (ele: any) {
   return hasScrollableContent && !isOverflowHidden;
 };
 
-const getScrollableParent = function (ele: any) {
+const getScrollableParent = function (ele: any): any {
   // eslint-disable-next-line no-nested-ternary
   return !ele || ele === document.body
     ? document.body
@@ -87,6 +86,10 @@ export const TableRow = Node.create<TableRowOptions>({
 
       const pos = () => (getPos as () => number)();
 
+      const scrollableParent = getScrollableParent(
+        editor.options.element
+      ) as HTMLDivElement;
+
       let isCursorInsideControlSection = false;
 
       const actions = {
@@ -116,7 +119,7 @@ export const TableRow = Node.create<TableRowOptions>({
         "section",
         {
           class:
-            "absolute flex items-center w-2 bg-gray-200 z-50 cursor-pointer border-1 border-indigo-600 rounded-l opacity-25 hover:opacity-100",
+            "absolute hidden flex items-center w-2 bg-gray-200 z-50 cursor-pointer border-1 border-indigo-600 rounded-l opacity-25 hover:opacity-100",
           contenteditable: "false",
         },
         {
@@ -209,11 +212,18 @@ export const TableRow = Node.create<TableRowOptions>({
 
       editor.on("selectionUpdate", repositionControlsCenter);
       editor.on("update", repositionControlsCenter);
+      scrollableParent?.addEventListener("scroll", repositionControlsCenter);
+      document.addEventListener("scroll", repositionControlsCenter);
 
       const destroy = () => {
         controlSection.remove();
         editor.off("selectionUpdate", repositionControlsCenter);
         editor.off("update", repositionControlsCenter);
+        scrollableParent?.removeEventListener(
+          "scroll",
+          repositionControlsCenter
+        );
+        document.removeEventListener("scroll", repositionControlsCenter);
       };
 
       return {
@@ -223,11 +233,4 @@ export const TableRow = Node.create<TableRowOptions>({
       };
     };
   },
-
-  // addNodeView() {
-  //   return ReactNodeViewRenderer(TableRowNodeView, {
-  //     as: "tr",
-  //     className: "w-full",
-  //   });
-  // },
 });
