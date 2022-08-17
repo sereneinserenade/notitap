@@ -112,7 +112,7 @@ export const TableRow = Node.create<TableRowOptions>({
       };
 
       const setCursorOutsideControlSection = () => {
-        isCursorInsideControlSection = true;
+        isCursorInsideControlSection = false;
       };
 
       const controlSection = getElementWithAttributes(

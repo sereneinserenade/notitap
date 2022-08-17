@@ -242,6 +242,7 @@ export const ResizableMediaNodeView = ({
             return (
               // TODO: figure out why tooltips are not working
               <button
+                key={btn.tooltip}
                 type="button"
                 className={`btn rounded-none h-8 px-2 ${
                   mediaActionActiveState[btn.tooltip] ? "active" : ""
