@@ -69,6 +69,21 @@ export const getExtensions = ({
     ...SuperchargedTableExtensions,
 
     // Resizable Media
-    ResizableMedia,
+    ResizableMedia.configure({
+      uploadFn: async (image) => {
+        const fd = new FormData();
+
+        fd.append("file", image);
+
+        const response = await fetch("https://api.imgur.com/3/image", {
+          method: "POST",
+          body: fd,
+        });
+
+        console.log(await response.json());
+
+        return "https://source.unsplash.com/8xznAGy4HcY/800x400";
+      },
+    }),
   ];
 };

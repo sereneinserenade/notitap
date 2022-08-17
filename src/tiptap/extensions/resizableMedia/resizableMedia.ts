@@ -6,6 +6,8 @@
 import { mergeAttributes, Node, nodeInputRule } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 
+import { getMediaDropPlugin, UploadFnType } from "./drop-plugin";
+
 import { ResizableMediaNodeView } from "./ResizableMediaNodeView";
 
 declare module "@tiptap/core" {
@@ -30,6 +32,7 @@ export interface MediaOptions {
   // inline: boolean, // we have floating support, so block is good enough
   // allowBase64: boolean, // we're not going to allow this
   HTMLAttributes: Record<string, any>;
+  uploadFn: UploadFnType;
 }
 
 export const IMAGE_INPUT_REGEX =
@@ -43,9 +46,10 @@ export const ResizableMedia = Node.create<MediaOptions>({
 
   addOptions() {
     return {
-      inline: false,
-      allowBase64: false,
       HTMLAttributes: {},
+      uploadFn: async () => {
+        return "";
+      },
     };
   },
 
@@ -202,5 +206,9 @@ export const ResizableMedia = Node.create<MediaOptions>({
         },
       }),
     ];
+  },
+
+  addProseMirrorPlugins() {
+    return [getMediaDropPlugin(this.options.uploadFn)];
   },
 });

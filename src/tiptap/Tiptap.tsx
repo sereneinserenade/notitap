@@ -21,7 +21,7 @@ import "./styles/tiptap.scss";
 
 export const Tiptap = () => {
   const logContent = useCallback(
-    (e: Editor) => console.log(JSON.stringify(e.getJSON())),
+    (e: Editor) => console.log(e.getJSON()),
     []
   );
 
@@ -74,7 +74,7 @@ export const Tiptap = () => {
 
   return (
     editor && (
-      <section className="flex flex-col gap-2 w-full justify-center h-screen overflow-y-auto">
+      <section className="flex flex-col gap-2 w-full justify-center">
         <span className="flex gap-2">
           <button
             className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
