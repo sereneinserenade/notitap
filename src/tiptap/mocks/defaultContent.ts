@@ -13,19 +13,14 @@ export const content: Content = {
       content: [
         {
           type: "heading",
-          attrs: { level: 1 },
-          content: [{ type: "text", text: "Welcome to Notitap-Pro." }],
-        },
-      ],
-    },
-    {
-      type: "dBlock",
-      content: [
-        {
-          type: "heading",
-          attrs: { level: 3 },
+          attrs: {
+            level: 1,
+          },
           content: [
-            { type: "text", text: "A notion like editor built with Tiptap" },
+            {
+              type: "text",
+              text: "Welcome to Notitap-Pro.",
+            },
           ],
         },
       ],
@@ -35,8 +30,32 @@ export const content: Content = {
       content: [
         {
           type: "heading",
-          attrs: { level: 2 },
-          content: [{ type: "text", text: "Features:" }],
+          attrs: {
+            level: 3,
+          },
+          content: [
+            {
+              type: "text",
+              text: "A notion like editor built with Tiptap",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "heading",
+          attrs: {
+            level: 2,
+          },
+          content: [
+            {
+              type: "text",
+              text: "Features:",
+            },
+          ],
         },
       ],
     },
@@ -52,7 +71,10 @@ export const content: Content = {
                 {
                   type: "paragraph",
                   content: [
-                    { type: "text", text: "Block Level Drag and Drop" },
+                    {
+                      type: "text",
+                      text: "Block Level Drag and Drop",
+                    },
                   ],
                 },
               ],
@@ -63,7 +85,10 @@ export const content: Content = {
                 {
                   type: "paragraph",
                   content: [
-                    { type: "text", text: "Resizable Media(Images, Videos)" },
+                    {
+                      type: "text",
+                      text: "Resizable Media(Images, Videos)",
+                    },
                   ],
                 },
               ],
@@ -73,7 +98,12 @@ export const content: Content = {
               content: [
                 {
                   type: "paragraph",
-                  content: [{ type: "text", text: "Supercharged Tables" }],
+                  content: [
+                    {
+                      type: "text",
+                      text: "Supercharged Tables",
+                    },
+                  ],
                 },
               ],
             },
@@ -82,7 +112,12 @@ export const content: Content = {
               content: [
                 {
                   type: "paragraph",
-                  content: [{ type: "text", text: "Link Previews" }],
+                  content: [
+                    {
+                      type: "text",
+                      text: "Link Previews",
+                    },
+                  ],
                 },
               ],
             },
@@ -95,8 +130,15 @@ export const content: Content = {
       content: [
         {
           type: "heading",
-          attrs: { level: 2 },
-          content: [{ type: "text", text: "Resizable Media" }],
+          attrs: {
+            level: 2,
+          },
+          content: [
+            {
+              type: "text",
+              text: "Resizable Media",
+            },
+          ],
         },
       ],
     },
@@ -105,8 +147,15 @@ export const content: Content = {
       content: [
         {
           type: "heading",
-          attrs: { level: 3 },
-          content: [{ type: "text", text: "Images:" }],
+          attrs: {
+            level: 3,
+          },
+          content: [
+            {
+              type: "text",
+              text: "Images:",
+            },
+          ],
         },
       ],
     },
@@ -133,8 +182,15 @@ export const content: Content = {
       content: [
         {
           type: "heading",
-          attrs: { level: 3 },
-          content: [{ type: "text", text: "Videos:" }],
+          attrs: {
+            level: 3,
+          },
+          content: [
+            {
+              type: "text",
+              text: "Videos:",
+            },
+          ],
         },
       ],
     },
@@ -156,14 +212,31 @@ export const content: Content = {
         },
       ],
     },
-    { type: "dBlock", content: [{ type: "heading", attrs: { level: 2 } }] },
     {
       type: "dBlock",
       content: [
         {
           type: "heading",
-          attrs: { level: 2 },
-          content: [{ type: "text", text: "SuperCharged Tables:" }],
+          attrs: {
+            level: 2,
+          },
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "heading",
+          attrs: {
+            level: 2,
+          },
+          content: [
+            {
+              type: "text",
+              text: "SuperCharged Tables:",
+            },
+          ],
         },
       ],
     },
@@ -178,41 +251,77 @@ export const content: Content = {
               content: [
                 {
                   type: "tableHeader",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Number" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Number",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableHeader",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Name" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Name",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableHeader",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Importance" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Importance",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableHeader",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Reason" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Reason",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -223,37 +332,68 @@ export const content: Content = {
               content: [
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "1" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "1",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Laptop" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Laptop",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "High Importance " }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "High Importance ",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
@@ -273,37 +413,68 @@ export const content: Content = {
               content: [
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "2" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "2",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Mobile" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Mobile",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Medium importance" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Medium importance",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
@@ -323,37 +494,68 @@ export const content: Content = {
               content: [
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "3" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "3",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Watch" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Watch",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
-                      content: [{ type: "text", text: "Low Importance" }],
+                      content: [
+                        {
+                          type: "text",
+                          text: "Low Importance",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
                   type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                  attrs: {
+                    colspan: 1,
+                    rowspan: 1,
+                    colwidth: null,
+                  },
                   content: [
                     {
                       type: "paragraph",
@@ -372,7 +574,93 @@ export const content: Content = {
         },
       ],
     },
-    { type: "dBlock", content: [{ type: "paragraph" }] },
-    { type: "dBlock", content: [{ type: "paragraph" }] },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
+    {
+      type: "dBlock",
+      content: [
+        {
+          type: "paragraph",
+        },
+      ],
+    },
   ],
 };

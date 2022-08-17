@@ -1,11 +1,11 @@
 .dropdown {
-  @apply bg-white w-52 z-50 translate-x-[52%];
+  @apply bg-white w-52 z-50 -translate-x-2 rounded;
 
   .dropdown-content {
     @apply bg-white flex flex-col;
 
     .button {
-      @apply flex gap-2 text-black py-1 px-2 w-full rounded-lg items-center;
+      @apply flex gap-2 text-black py-1 px-2 w-full rounded items-center;
 
       &:hover {
         @apply bg-gray-100;

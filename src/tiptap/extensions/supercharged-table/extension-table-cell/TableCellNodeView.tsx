@@ -118,6 +118,7 @@ export const TableCellNodeView: FC<NodeViewProps> = ({
           trigger="click"
           interactive
           animation="shift-toward-subtle"
+          placement="right-start"
           content={
             <article className="dropdown" contentEditable={false}>
               <ul

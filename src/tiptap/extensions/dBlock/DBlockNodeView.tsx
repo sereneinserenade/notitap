@@ -32,7 +32,7 @@ export const DBlockNodeView: React.FC<NodeViewProps> = ({
   };
 
   return (
-    <NodeViewWrapper as="div" className="flex gap-2 group w-full">
+    <NodeViewWrapper as="div" className="flex gap-2 group w-full relative">
       <section
         className="flex mt-2 pt-[2px] gap-1"
         aria-label="left-menu"
@@ -45,7 +45,6 @@ export const DBlockNodeView: React.FC<NodeViewProps> = ({
         >
           <i className="i-mdi-plus" />
         </button>
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
           className="d-block-button group-hover:opacity-100"
           contentEditable={false}
