@@ -3,7 +3,7 @@
 Pro version of Notion like editor built on top of [Tiptap](https://tiptap.dev/).
 
 ![GitHub Sponsors](https://img.shields.io/github/sponsors/sereneinserenade?color=%23bf3989&label=Sponsor%20Me&style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/notitap/notitap?label=Star%20the%20Repo&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/sereneinserenade/notitap?label=Star%20the%20Repo&style=for-the-badge)
 [![Twitter Support](https://img.shields.io/badge/sereneInSerenad-a--?logo=twitter&style=for-the-badge&color=000)](https://twitter.com/sereneInSerenad)
 
 A ⭐️ to the repo if you 👍 / ❤️  what I'm doing would be much appreciated. If you're using this extension and making money from it, it'd be very kind of you to **[:heart: Sponsor me](https://github.com/sponsors/sereneinserenade)**. If you're looking for a **dev to work you on your project's Rich Text Editor** with or as **a frontend developer, [DM me on Discord/Twitter/LinkedIn](https://github.com/sereneinserenade)👨‍💻🤩**.
@@ -35,4 +35,4 @@ Visit https://sereneinserenade.github.io/notitap/ for a live demo.
 Clone the repo, do something, make a PR. You know what's the drill. Looking forward to your PRs, you amazing devs.
 
 ## Stargazers
-[![Stargazers repo roster for @notitap/notitap](https://reporoster.com/stars/dark/notitap/notitap)](https://github.com/notitap/notitap/stargazers)
+[![Stargazers repo roster for @sereneinserenade/notitap](https://reporoster.com/stars/dark/sereneinserenade/notitap)](https://github.com/sereneinserenade/notitap/stargazers)
