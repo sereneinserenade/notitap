@@ -200,17 +200,17 @@ export const ResizableMediaNodeView = ({
     <NodeViewWrapper
       as="article"
       className={`
-        media-node-view not-prose
+        media-node-view not-prose transition-all ease-in-out w-full
         ${(isFloat && `f-${node.attrs.dataFloat}`) || ""}
-        ${(isAlign && `align-${node.attrs.dataAlign}`) || ""}
+        ${(isAlign && `justify-${node.attrs.dataAlign}`) || ""}
       `}
     >
-      <div className="w-fit flex relative group">
+      <div className="w-fit flex relative group transition-all ease-in-out">
         {mediaType === "img" && (
           <img
             src={node.attrs.src}
             ref={resizableImgRef as any}
-            className={`rounded-lg ${`float-${node.attrs.dataFloat}`} ${`align-${node.attrs.dataAlign}`}`}
+            className="rounded-lg"
             alt={node.attrs.src}
             width={node.attrs.width}
             height={node.attrs.height}
@@ -220,7 +220,7 @@ export const ResizableMediaNodeView = ({
         {mediaType === "video" && (
           <video
             ref={resizableImgRef as any}
-            className={`rounded-lg ${`float-${node.attrs.dataFloat}`} ${`align-${node.attrs.dataAlign}`}`}
+            className="rounded-lg"
             controls
             width={node.attrs.width}
             height={node.attrs.height}

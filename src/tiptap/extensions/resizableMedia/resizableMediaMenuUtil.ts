@@ -19,11 +19,11 @@ export const resizableMediaActions: ResizableMediaAction[] = [
     tooltip: "Align left",
     action: (updateAttributes) =>
       updateAttributes({
-        dataAlign: "left",
+        dataAlign: "start",
         dataFloat: null,
       }),
     icon: "i-mdi-format-align-left",
-    isActive: (attrs) => attrs.dataAlign === "left",
+    isActive: (attrs) => attrs.dataAlign === "start",
   },
   {
     tooltip: "Align center",
@@ -39,11 +39,11 @@ export const resizableMediaActions: ResizableMediaAction[] = [
     tooltip: "Align right",
     action: (updateAttributes) =>
       updateAttributes({
-        dataAlign: "right",
+        dataAlign: "end",
         dataFloat: null,
       }),
     icon: "i-mdi-format-align-right",
-    isActive: (attrs) => attrs.dataAlign === "right",
+    isActive: (attrs) => attrs.dataAlign === "end",
   },
   {
     tooltip: "Delete",
