@@ -9,9 +9,9 @@ function App() {
         <section className="flex flex-row items-center gap-4">
           <a
             className="text-3xl link"
-            href="https://github.com/sereneinserenade/notitap-pro"
+            href="https://github.com/sereneinserenade/notitap"
           >
-            notitap-pro <i className="i-mdi-github" />
+            notitap <i className="i-mdi-github" />
           </a>
           <a
             className="text-pink-400 border border-pink-400 rounded-xl p-2 flex items-center justify-center hover:text-white hover:bg-pink-400 transition-all duration-200"

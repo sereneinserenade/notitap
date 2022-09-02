@@ -14,7 +14,7 @@ export const content: Content = {
           content: [
             {
               type: "text",
-              text: "Welcome to Notitap-Pro.",
+              text: "Welcome to notitap.",
             },
           ],
         },
